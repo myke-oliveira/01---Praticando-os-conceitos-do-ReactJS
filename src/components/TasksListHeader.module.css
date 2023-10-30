@@ -1,0 +1,41 @@
+.taskListHeader {
+  display: flex;
+  justify-content: space-between;
+  max-width: 736px;
+  margin: 5.5rem auto 1.5rem;
+}
+
+.createdTasksInfo {
+  display: flex;
+  align-items: center;
+  gap: 10px
+}
+
+.createdTasksInfo>span:first-child {
+  color: var(--blue)
+}
+
+.createdTasksInfo>span:last-child {
+  background: var(--gray-400);
+  color: var(--gray-200);
+  border-radius: 10px;
+  padding: 2px 8px;
+}
+
+.doneTasksInfo {
+  display: flex;
+  align-items: center;
+  gap: 10px
+}
+
+.doneTasksInfo>span:first-child {
+  color: var(--purple);
+  font-weight: 800;
+}
+
+.doneTasksInfo>span:last-child {
+  background: var(--gray-400);
+  color: var(--gray-200);
+  border-radius: 10px;
+  padding: 2px 8px;
+}
