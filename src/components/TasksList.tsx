@@ -14,7 +14,7 @@ export function TasksList({ tasks }: Props) {
 
   return <>
     <TasksListHeader totalTasks={totalTasks} totalDoneTasks={totalDoneTasks} />
-    {!tasks
+    {tasks.length <= 0
       ? <TasksListEmptyBody />
       : <TasksListBody tasks={tasks} />
     }

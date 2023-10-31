@@ -3,6 +3,7 @@ import { CreateNewTaskBar } from './components/CreateNewTaskBar'
 import { Header } from './components/Header'
 import { TasksList } from './components/TasksList';
 import "./global.css";
+import { useState } from "react";
 
 export interface Task {
   id: string;
@@ -12,18 +13,7 @@ export interface Task {
 
 function App() {
 
-  const tasks: Task[] = [
-    {
-      id: uuidV4(),
-      text: "Projeto 1 de React",
-      done: false
-    },
-    {
-      id: uuidV4(),
-      text: "Estudar espanhol",
-      done: true
-    }
-  ]
+  const [tasks, setTasks] = useState<Task[]>([])
 
   return (
     <>
