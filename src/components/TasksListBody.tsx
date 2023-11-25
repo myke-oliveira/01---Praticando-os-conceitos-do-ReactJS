@@ -1,19 +1,48 @@
 import { Task } from "../App";
 import { Trash } from "@phosphor-icons/react";
 import style from "./TaskListBody.module.css";
+import { ChangeEvent, MouseEvent } from "react";
 
 interface Props {
-  tasks: Task[]
+  tasks: Task[],
+  setTasks: (tasks: Task[]) => void;
 }
 
-export function TasksListBody({ tasks }: Props) {
+export function TasksListBody({ tasks, setTasks }: Props) {
+
+  function handleToggleTaskDone(event: ChangeEvent<HTMLInputElement>) {
+    const taskId = event.currentTarget.dataset.taskId;
+    setTasks(tasks.map(task => {
+      if (task.id !== taskId) return task
+
+      task.done = !task.done
+
+      return task
+    }))
+  }
+
+  function handleDeleteTask(event: MouseEvent<HTMLButtonElement>) {
+    console.log(event)
+    setTasks(tasks.filter(task => task.id !== event.currentTarget.dataset.taskId))
+  }
+
   return tasks.map(task => (
-    <div className={style.task}>
+    <div key={task.id} className={style.task}>
       <div>
-        <input type="radio" name="" id="" checked={task.done} />
+        <input
+          type="radio"
+          checked={task.done}
+          onChange={handleToggleTaskDone}
+          data-task-id={task.id}
+        />
         {task.text}
       </div>
-      <Trash />
+      <button
+        onClick={handleDeleteTask}
+        data-task-id={task.id}
+      >
+        <Trash />
+      </button>
     </div>
   ))
 }

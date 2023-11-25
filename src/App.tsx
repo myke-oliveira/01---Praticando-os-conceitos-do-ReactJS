@@ -18,8 +18,8 @@ function App() {
   return (
     <>
       <Header />
-      <CreateNewTaskBar />
-      <TasksList tasks={tasks} />
+      <CreateNewTaskBar tasks={tasks} setTasks={setTasks} />
+      <TasksList tasks={tasks} setTasks={setTasks} />
     </>
   )
 }
