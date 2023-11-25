@@ -20,7 +20,7 @@ export function CreateNewTaskBar({ tasks, setTasks }: Props) {
   function handleCreateNewTask() {
     const newTask: Task = {
       id: uuidV4(),
-      text: newTaskText,
+      text: newTaskText.trim(),
       done: false
     }
 
@@ -38,7 +38,7 @@ export function CreateNewTaskBar({ tasks, setTasks }: Props) {
         value={newTaskText}
         onChange={handleInputChange}
       />
-      <button onClick={handleCreateNewTask}>
+      <button onClick={handleCreateNewTask} disabled={newTaskText.trim() === ""}>
         Criar
         <PlusCircle />
       </button>
